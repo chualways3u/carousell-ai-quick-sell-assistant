@@ -1,0 +1,95 @@
+{
+  "dataset_version": "0.1",
+  "observed_date_sgt": "2026-09-27",
+  "collection_method": "User-supplied screenshots and corresponding URLs; fields transcribed with AI assistance.",
+  "price_type": "asking_price",
+  "currency": "SGD",
+  "scope": "Three commercial iPhone 13 128GB offers",
+  "limitations": [
+    "Seller claims have not been independently verified.",
+    "Stock availability has not been confirmed with sellers.",
+    "These are asking prices, not transaction prices.",
+    "Condition, battery health, accessories and warranty differ.",
+    "This small commercial sample does not establish private-sale value or time to sale."
+  ],
+  "records": [
+    {
+      "listing_id": "1463427560",
+      "source_url": "https://www.carousell.sg/certified-used-phone-l/apple-f/iphone-13-128gb-pink-P121220-PV121223-r?viewing_mode=0&listing_id=1463427560",
+      "brand": "Apple",
+      "model": "iPhone 13",
+      "storage_gb": 128,
+      "colour": "Pink",
+      "asking_price_sgd": 338,
+      "seller_name_in_description": "Mobile Relation",
+      "seller_type": "commercial",
+      "seller_condition_rating": "9.3/10",
+      "battery_health_display_pct": 85,
+      "screen_description": "No scratches reported",
+      "body_description": "Light scratches reported",
+      "included_accessories": [
+        "Box",
+        "USB-C to Lightning cable"
+      ],
+      "seller_warranty": "30-day in-house warranty",
+      "manufacturer_warranty": null,
+      "evidence_screenshots": [
+        "Screenshot 2026-09-27 at 03.32.21.png"
+      ]
+    },
+    {
+      "listing_id": "1464000692",
+      "source_url": "https://www.carousell.sg/certified-used-phone-l/apple-f/iphone-13-128gb-midnight-P121220-PV121222-r?viewing_mode=0&listing_id=1464000692",
+      "brand": "Apple",
+      "model": "iPhone 13",
+      "storage_gb": 128,
+      "colour": "Midnight",
+      "asking_price_sgd": 344,
+      "seller_name": "CarousellMOBILE",
+      "seller_type": "commercial",
+      "battery_health_display_pct": 94,
+      "screen_description": "Reported as perfect condition and crystal clear",
+      "body_description": "No scratches reported",
+      "included_accessories": [
+        "Wall plug",
+        "Charging cable"
+      ],
+      "seller_warranty": "12-month warranty",
+      "manufacturer_warranty": false,
+      "evidence_screenshots": [
+        "Screenshot 2026-09-27 at 03.34.04.png",
+        "Screenshot 2026-09-27 at 03.34.54.png"
+      ]
+    },
+    {
+      "listing_id": "1462460818",
+      "source_url": "https://www.carousell.sg/certified-used-phone-l/apple-f/iphone-13-128gb-starlight-P121220-PV121225-r?viewing_mode=0&listing_id=1462460818",
+      "brand": "Apple",
+      "model": "iPhone 13",
+      "storage_gb": 128,
+      "colour": "Starlight",
+      "asking_price_sgd": 348,
+      "seller_name": "Mister Mobile",
+      "seller_type": "commercial",
+      "seller_condition_description": "Pristine; body micro scratches also disclosed",
+      "battery_health_display_pct": 90,
+      "battery_health_description": "At least 90%",
+      "screen_description": "Reported as flawless",
+      "body_description": "Micro scratches reported",
+      "included_accessories": [
+        "Box",
+        "Charging cable"
+      ],
+      "excluded_accessories": [
+        "Power adapter",
+        "Earpiece"
+      ],
+      "seller_warranty": "30-day in-house warranty",
+      "manufacturer_warranty": false,
+      "evidence_screenshots": [
+        "Screenshot 2026-09-27 at 03.35.51.png",
+        "Screenshot 2026-09-27 at 03.36.19.png"
+      ]
+    }
+  ]
+}
