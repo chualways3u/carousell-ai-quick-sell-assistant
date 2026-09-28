@@ -63,21 +63,25 @@ Never commit API keys to this repository.
 
 ## Data and Pricing
 
-The current dataset contains four AI-assisted synthetic reference
-fixtures, including one different-capacity distractor.
+The integrated prototype uses three commercial iPhone 13 128GB
+asking-price observations collected from Carousell Singapore on
+27 September 2026. The recorded prices are SGD 338, SGD 344 and
+SGD 348, supported by source URLs and author-collected screenshots.
 
-Prices are artificial test values, not observed Carousell asking
-prices or confirmed transaction prices.
+Reference retrieval matches normalized brand and model names
+and storage capacity. Condition, battery health, accessories and
+warranty differ across offers and are displayed as context,
+not treated as equivalent.
 
-Matching requires normalized agreement on brand, model,
-specifications, condition, defects, and accessories.
-At least three matching records are required by the development rule.
-
-The displayed range is the minimum and maximum of matched values.
-It is not a market valuation, confidence interval, or prediction of
-the eventual selling price.
+The displayed range is the minimum and maximum of the matched
+asking prices. It is not a market valuation, confidence interval
+or prediction of the eventual selling price. The integrated
+workflow does not require a minimum of three matching records
+and does not produce a private-sale price recommendation.
 
 This implementation uses rule-based retrieval, not semantic RAG.
+Earlier synthetic development fixtures were used solely for
+testing software logic and are not evidence of real market prices.
 
 ## Development Evaluation
 
