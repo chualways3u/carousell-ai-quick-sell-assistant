@@ -1,0 +1,34 @@
+{
+  "protocol_version": "external_deepseek_v1",
+  "source_model": "DeepSeek",
+  "source_model_version": null,
+  "source_attribution": "User reported using DeepSeek; version not supplied; not independently verified",
+  "transcribed_from": "Two user-pasted JSON objects; serialization normalized, field values preserved",
+  "case_count": 12,
+  "valid_input_count": 9,
+  "original_dataset_sha256": "72364f01df42be13373c369e6fd0f80251e418d816eb53edec3f0edab63b04f2",
+  "corrected_dataset_sha256": "c68ddd6df545bd5f862159aa49eb3f1b51d3c277dc52cc7a2d6f36380bd33b01",
+  "reference_data_sha256": "29f8fd108788a72c410489ff716de616baf4961b4c4abc8c602b89defbcbc4eb",
+  "base_notebook_sources_sha256": "d68f22baa407798e9ee5ad099475a93e079556cbcdadff56fb20b4d2bb853a6d",
+  "changes_before_execution": [
+    "EXT-03 rationale: poor condition corrected to fair condition",
+    "EXT-06 prohibited base-model substring replaced by semantic misidentification criterion",
+    "EXT-11 rationale: nonexistent scratch-context requirement removed",
+    "Top-level semantic evaluation note added"
+  ],
+  "limitations": [
+    "Supplementary different-model-authored cases, not independently verified blind holdout",
+    "Some cases overlap earlier development cases",
+    "Test oracle was reviewed and corrected with the build assistant before execution"
+  ],
+  "l1_checks": [
+    "status",
+    "model_request_count",
+    "reference_ids",
+    "observed_range",
+    "no_private_price",
+    "draft_schema_or_rejection",
+    "seller_only_payload_for_valid_llm"
+  ],
+  "l2_policy": "Four human-reviewed criteria with reasons; no keyword-based semantic scoring; no human ratings assigned automatically"
+}
