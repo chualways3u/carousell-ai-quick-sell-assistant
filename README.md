@@ -98,4 +98,4 @@ Results are saved under `artifacts/`, with supplementary runs in `artifacts/exte
 
 ## Individual Work and AI Assistance
 
-I personally collected the webpage evidence, ran the notebook and API evaluations, and saved and uploaded project files. AI assistance supported code, documentation, debugging and test design, and the labelled AI-assisted L2 review. Reported historical API outputs come from the recorded development run.
+I personally collected the webpage evidence, ran the notebook and API evaluations, and saved and uploaded project files. AI assistance supported code, documentation, debugging and test design, and the labelled AI-assisted L2 review. Reported historical API outputs come from the recorded development run. The earlier AI-assisted L2 review is not independent human evaluation. I remain responsible for verifying the submitted work.
