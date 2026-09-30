@@ -4,69 +4,97 @@ PE6201 End-of-Course Project — Individual Prototype
 
 ## Purpose
 
-Help international students and young working professionals in Singapore prepare English second-hand listings using seller facts and commercial reference offers. The seller checks the draft and manually copies it to Carousell. This project is not affiliated with Carousell.
+Preparing a second-hand listing involves two practical tasks: finding relevant price references and describing the item clearly. For international students and young working professionals in Singapore, these tasks can be especially inconvenient when moving, graduating or leaving the country.
+
+Carousell AI Quick-Sell Assistant brings **reference offers and English draft writing into one workflow**. Sellers enter their item's details, view matching commercial asking prices and receive a listing draft to review and copy to Carousell. The goal is to make listing preparation easier while keeping the seller in control of the final wording and asking price.
+
+The working prototype focuses its reference data on **iPhone 13 128GB**. It combines a reproducible template baseline with optional AI writing and recorded evaluations. 
+
+## What the Prototype Does
+
+1. **Collects seller facts:** brand, model, storage, condition, defects and accessories.
+2. **Validates inputs:** blocks missing or invalid required information before generation.
+3. **Finds reference offers:** matches brand, model and capacity against a documented snapshot.
+4. **Prepares an English draft:** uses a fixed template by default or optional LLM generation.
+5. **Supports seller review:** displays seller facts and reference context before the seller manually copies a draft to Carousell.
+
+The reference range supports comparison; it is not a recommended private-sale price. Listing preparation time and selling outcomes have not yet been measured.
 
 ## Main File
 
 `PE6201_Final_Carousell_QuickSell.ipynb`
 
 - Sections 2–11: earlier synthetic development tests and historical outputs.
-- Sections 12–15: real reference data and integrated demonstration.
-- Sections 16–18: integrated evaluation and evidence export.
+- Sections 12–15: real reference snapshot and integrated demonstration.
+- Sections 16–18: integrated evaluation and export.
+- Sections 19–21: DeepSeek supplementary evaluation and export.
 
 ## Run in Colab
 
 **Offline demonstration**
 
-1. Open the notebook in Google Colab.
-2. Keep all API and download switches `False`, including `RUN_LIVE_API`, `DEMO_USE_LLM` and `RUN_INTEGRATED_LLM_EVAL`.
-3. Run all cells. View the demonstration in Section 14 and template evaluation in Section 17. No model requests are made.
+Open the notebook in Colab, keep all API and download switches `False`, and run all cells. View Section 14 for the template demonstration, Section 17 for integrated template checks and Section 20 for supplementary template checks. No API key is needed. Historical LLM outputs remain labelled as saved results.
 
-**One live LLM demonstration**
+**One live AI draft**
 
-1. First install the tested SDK in a separate cell: `%pip install openai==2.54.0`.
-2. Set `DEMO_USE_LLM = True`; keep `RUN_LIVE_API` and `RUN_INTEGRATED_LLM_EVAL` false.
-3. Run the notebook and enter the OpenRouter key in the hidden prompt. View Section 14.
+Install the recorded SDK version in a separate cell:
 
-A valid live demonstration makes one request to `openai/gpt-4o-mini`. Course-provided API credits cover this project's usage at no personal cost to the student; requests still consume credits. Never commit API keys.
+```python
+%pip install openai==2.54.0
+```
+
+Set `DEMO_USE_LLM = True` in Section 1. Keep `RUN_LIVE_API`, `RUN_INTEGRATED_LLM_EVAL` and `RUN_EXTERNAL_LLM_EVAL` false. Run through Section 14 and enter the OpenRouter key in the hidden prompt. A valid demonstration makes one request to `openai/gpt-4o-mini`. Never commit API keys.
+
+**Optional evaluation reruns**
+
+After offline setup and SDK installation, enable only the desired batch switch: `RUN_INTEGRATED_LLM_EVAL` in Section 17 or `RUN_EXTERNAL_LLM_EVAL` in Section 20. Run that cell once; each normally makes nine requests. `RUN_LIVE_API` controls the older seven-request development batch.
+
+Recorded live runs used Python 3.13.15 and OpenAI SDK 2.54.0. Course-provided credits covered the author's API usage; calls still consume credits. Provider availability and Colab environments may change.
 
 ## Data and Pricing
 
-I collected three Carousell Singapore commercial iPhone 13 128GB offers on 27 September 2026: Pink at **SGD 338**, Midnight at **SGD 344**, and Starlight at **SGD 348**. Source URLs and screenshots support these observed asking prices; they are not confirmed transaction prices.
+The author collected three commercial Carousell Singapore iPhone 13 128GB asking-price observations on **27 September 2026**, with source URLs and screenshots:
 
-Section 12 loads `data/iphone13_reference_listings.json` or `iphone13_reference_listings.json`, falling back to the embedded snapshot only when neither file exists.
+| Colour | Observed asking price |
+|---|---:|
+| Pink | SGD 338 |
+| Midnight | SGD 344 |
+| Starlight | SGD 348 |
 
-Retrieval matches normalized brand, model and storage capacity. Condition, battery health, accessories and warranty differ. The displayed range is the minimum and maximum of matching offers. No match means no range; there is no three-record minimum. The system provides no private-sale price recommendation.
+These are dated merchant offers, not transaction prices. Condition, battery health, accessories and warranty differ; seller claims have not been independently verified.
 
-This is rule-based retrieval, not semantic RAG. Earlier synthetic price fixtures test software logic only and are separate from the real reference data.
+Retrieval uses normalized brand, model and storage capacity. It is **rule-based retrieval**, not semantic RAG. Condition and accessories are context, not matching filters. The range is the minimum and maximum of available matching prices; no match means no range. There is no three-record threshold, and `recommended_price_sgd` remains null.
 
-## Integrated Evaluation
+Section 12 loads `data/iphone13_reference_listings.json`, then `iphone13_reference_listings.json`, or uses the embedded snapshot if neither exists. Invalid external data raises an error. Synthetic test inputs and earlier synthetic price fixtures are separate from these real observations.
 
-The recorded batch uses 12 constructed test cases: nine valid and three invalid inputs.
+## Recorded Evaluation
 
-| Measure | Template | LLM |
-|---|---:|---:|
-| Automated L1 cases passed | 12/12 | 12/12 |
-| Model requests | 0 | 9 |
-| Integrated L2 human review | Pending | Pending |
+Two 12-case sets compare the template and LLM, each with nine valid and three invalid inputs.
 
-L1 checks predefined workflow behavior and output structure, not general factual accuracy. These author-designed cases are not an independent holdout. Earlier AI-assisted L2 reviews are historical, not current human ratings.
+| Measure | Integrated template | Integrated LLM | DeepSeek template | DeepSeek LLM |
+|---|---:|---:|---:|---:|
+| Automated L1 cases passed | 12/12 | 12/12 | 12/12 | 12/12 |
+| Model requests | 0 | 9 | 0 | 9 |
+| Author-accepted drafts | 8/9 | 9/9 | 7/9 | 3/9 |
 
-To repeat the integrated live batch after offline setup and SDK installation, leave the other API switches false, set `RUN_INTEGRATED_LLM_EVAL = True` in Section 17 and run that cell. This normally makes nine requests. `RUN_LIVE_API` controls the older seven-request development evaluation.
+The evaluations informed the design: retain the template as the default and offer AI writing with seller review. L1 verifies structure and workflow; author review checks draft quality. Supplementary tests identified unsupported original-box and warranty claims and copied attack instructions.
 
-Recorded environment: Python 3.13.15; OpenAI SDK 2.54.0.
+Reviews were retrospective, unblinded and AI-assisted. DeepSeek's exact version was not supplied; three errors in its expected-result criteria were corrected before execution. Some cases overlap earlier tests, so this is not an independent blind holdout. EXT-02 was a borderline defect-wording rejection; accepting that case alone would change supplementary LLM acceptability to 4/9. These results describe the tested cases, not general accuracy.
 
-## Controls and Limitations
+Raw JSON retains execution-time pending review fields. Completed author judgments are recorded in:
 
-Invalid required inputs are blocked. Only six seller fields reach the model; reference prices and merchant warranties are excluded. Prompts require declared defects and accessories and prohibit invented claims. Output checks record malformed responses and API failures; seller review remains necessary.
+- `artifacts/integrated_author_review.md`
+- `artifacts/external_deepseek/external_author_review.md`
 
-Limitations include three commercial references, unverified seller claims, stale-price risk and incomplete quality evaluation. Instructions inside permitted fields remain a risk. No improvement in listing time, selling time or pricing accuracy has been demonstrated.
+## Controls and Limits
 
-## Outputs and Remaining Work
+Implemented controls include required-input validation, a six-field input allowlist, restrictive generation prompts, separate seller-fact display, output-schema checks and error logging. Merchant prices and warranties are excluded from the listing model's input. Publishing remains a manual seller action.
 
-JSON results are saved in `artifacts/`. Section 15 downloads the demonstration; Section 18 exports integrated evaluation evidence. Download the notebook separately because Colab storage is temporary.
+These controls support a supervised prototype; they do not catch every unsupported claim or injected instruction. Seller review is necessary and is not enforced by an approval gate. Next steps are stronger claim verification and user testing of listing preparation time.
 
-Before submission: synchronize the latest notebook and evidence, complete outstanding evaluation, verify reproducibility and assessor access, finalize the analysis of no more than 1,200 words, and record the presentation/demo.
+## Evidence and Export
+
+Results are saved under `artifacts/`, with supplementary runs in `artifacts/external_deepseek/`. Sections 15, 18 and 21 export evidence without repeating generation. Preserve failed attempts as well as successful runs. Download the executed notebook separately because Colab runtime storage is temporary.
 
 ## Individual Work and AI Assistance
 
